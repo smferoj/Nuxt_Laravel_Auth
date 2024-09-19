@@ -16,7 +16,8 @@ Route::controller(AuthController::class)->group(function(){
     Route::post('/register', 'register');
 });
 
-// Route::prefix('api')->controller(AuthController::class)->group(function(){
-//     Route::post('/login', 'login');
-//     Route::post('/register', 'register');
-// });
+
+Route::controller(AuthController::class)->middleware(['auth:sanctum'])->group(function(){
+    Route::post('/logout', 'logout');
+    
+});
